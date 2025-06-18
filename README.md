@@ -26,12 +26,21 @@ IntelliJ IDEA 2025.1.1.1
 ## 环境
 
 -Java 17.0.15
+
 -Maven 3.9.9
+
 -MySQL 8.0.32
 
 ## 配置
-导入数据库
-修改配置文件的datasource部分
+
+1. 导入数据库
+
+```sh
+mysql -u root -p databasename < filename.sql
+```
+其他导入方法也行
+
+2. 修改配置文件的datasource部分
 
 ## 部署步骤
 
