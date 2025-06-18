@@ -10,6 +10,8 @@
 
 2. CRUD
 
+   具体接口信息请看Controller包下的文件
+
 ## 技术栈
 
 - **后端框架**: [Spring Boot 3](https://spring.io/projects/spring-boot)
