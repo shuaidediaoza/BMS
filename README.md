@@ -25,11 +25,11 @@ IntelliJ IDEA 2025.1.1.1
 
 ## 环境
 
--Java 17.0.15
+- Java 17.0.15
 
--Maven 3.9.9
+- Maven 3.9.9
 
--MySQL 8.0.32
+- MySQL 8.0.32
 
 ## 配置
 
