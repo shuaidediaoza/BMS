@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.smsless.mapper.StoreVOMapper">
+
+
+    <select id="selectStoreVo" resultType="com.example.smsless.entity.StoreVO">
+        select l.*,
+               COALESCE(SUM(i.quantity * p.volume), 0) AS used_capacity,
+               COALESCE(SUM(i.quantity * p.cost_price), 0) AS total_cost,
+               COALESCE(SUM(i.quantity * p.sale_price), 0) AS total_profit,
+               COALESCE(SUM(i.quantity * p.sale_price), 0) - COALESCE(SUM(i.quantity * p.cost_price), 0) AS total_revenue
+        from location l
+        left join inventory i on l.id = i.location_id
+        left join product p on i.product_id = p.id
+        left join sale s on l.id = s.location_id
+        where l.type = 'STORE'
+        GROUP BY id;
+    </select>
+    <select id="selectStoreVoById" resultType="com.example.smsless.entity.StoreVO">
+        select l.*,
+               COALESCE(SUM(i.quantity * p.volume), 0) AS used_capacity,
+               COALESCE(SUM(i.quantity * p.cost_price), 0) AS total_cost,
+               COALESCE(SUM(i.quantity * p.sale_price), 0) AS total_profit,
+               COALESCE(SUM(i.quantity * p.sale_price), 0) - COALESCE(SUM(i.quantity * p.cost_price), 0) AS total_revenue
+        from location l
+                 left join inventory i on l.id = i.location_id
+                 left join product p on i.product_id = p.id
+                 left join sale s on l.id = s.location_id
+        where l.type = 'STORE' and l.id = #{id}
+    </select>
+</mapper>

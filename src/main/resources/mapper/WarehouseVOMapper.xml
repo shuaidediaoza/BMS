@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.smsless.mapper.WarehouseVOMapper">
+
+    <select id="selectWarehouseById" resultType="com.example.smsless.entity.WarehouseVO">
+        SELECT l.*, COALESCE(SUM(i.quantity * p.volume), 0) AS used_capacity
+                FROM location l
+                LEFT JOIN inventory i ON l.id = i.location_id
+                LEFT JOIN product p ON i.product_id = p.id
+                WHERE l.type = 'warehouse' and l.id = #{id}
+    </select>
+    <select id="selectAllWarehouseWithCapacity" resultType="com.example.smsless.entity.WarehouseVO">
+        SELECT l.*, COALESCE(SUM(i.quantity * p.volume), 0) AS used_capacity
+                FROM location l
+                LEFT JOIN inventory i ON l.id = i.location_id
+                LEFT JOIN product p ON i.product_id = p.id
+                WHERE l.type = 'warehouse'
+                GROUP BY l.id
+    </select>
+</mapper>

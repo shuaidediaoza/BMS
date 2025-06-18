@@ -1,0 +1,29 @@
+
+server:
+  address: 0.0.0.0
+  port: 8080
+spring:
+  application:
+    name: smsless
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: SMS
+    url: jdbc:mysql://localhost:3306/smsless?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: SMS
+mybatis-plus:
+#  config-location: classpath:/config/mybatis-config.xml
+  mapper-locations: classpath:/mapper/*.xml
+#  type-aliases-package: com.smsless.entity
+#  type-handlers-package: com.smsless.handler
+
+
+#    cache-enabled: true
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #  sql打印到控制台
+  global-config:
+    # 全局配置
+    db-config:
+      # 数据库配置
+      id-type: auto
