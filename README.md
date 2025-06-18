@@ -42,6 +42,25 @@ mysql -u root -p databasename < filename.sql
 
 2. 修改配置文件的datasource部分
 
-## 部署步骤
+## 打包运行
 
+1. 打包
 
+```sh
+mvn clean install
+```
+
+然后控制台输出信息找到jar包路径
+
+2. 切换目录
+
+```sh
+cd /path
+```
+
+3. 运行jar包
+```sh
+java -jar filename.jar
+```
+
+   
